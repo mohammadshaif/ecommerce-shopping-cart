@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart " >
+            <div class="col-md-12 col-lg-10 mx-auto ">
+               <div class="cart-item" id="item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default" id="btnMinus"><i  class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" id="itemValue" value="1">
+                           <button class="btn btn-default" id="btnPlus"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="itemTotal">1219</span> </h5>
+                        <img src="images/remove.png" alt="" class="remove-item" id="itemRemove">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item" id="item1">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default" id="btnMinus1"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center"id="itemValue1" value="1">
+                           <button class="btn btn-default" id="btnPlus1"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$<span id="itemTotal1">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item" id="itemRemove1">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5 >$ <span id="subTotal">1278</span> </h5>
+                        <h5 >$0</h5>
+                        <h5 >$ <span id="total">1278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+      
+//1st item plus value
+      const btnPlus = document.getElementById('btnPlus')
+      btnPlus.addEventListener('click' , function(){
+         const itemValue = document.getElementById("itemValue").value++
+         
+         TotalAmount('itemTotal') 
+         TotalAmount('subTotal')       
+         TotalAmount('total') 
+      })
+   function TotalAmount(id) {
+         const itemTotal = document.getElementById(id).innerText;
+         const itemTotalNumber= parseFloat(itemTotal);
+         const addItemTotal = itemTotalNumber + 1219;
+
+            document.getElementById(id).innerText = addItemTotal;
+      } 
+
+
+// 1st item min value     
+      const btnMinus = document.getElementById('btnMinus')
+      btnMinus.addEventListener('click' , function(){
+         const itemValue = document.getElementById("itemValue")
+         if(itemValue.value <=0 && itemTotal <=0 ){
+            itemValue.value = 0;
+            itemTotal = 0;
+         }
+         else{
+            itemValue.value--;
+         };
+         
+         const itemTotal = document.getElementById("itemTotal").innerText;
+         const itemTotalNumber= parseFloat(itemTotal);
+         const addItemTotal = itemTotalNumber - 1219;
+
+         document.getElementById("itemTotal").innerText = addItemTotal;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const totalOne = parseFloat(subTotal);
+         const finalTotal = totalOne -  1219;
+
+         document.getElementById("subTotal").innerText = finalTotal;
+         document.getElementById("total").innerText = finalTotal;
+
+         // minorAmount('itemTotal') 
+         // minorAmount('subTotal')       
+         // minorAmount('total')    
+         
+      })
+   //this code does not work
+      // function minorAmount(id) {
+         
+      //    const itemTotal = document.getElementById(id).innerText;
+      //    const itemTotalNumber= parseFloat(itemTotal);
+      //    const addItemTotal = itemTotalNumber - 1219;
+
+      //       document.getElementById(id).innerText = addItemTotal;
+      //       if( addItemTotal <=0 ){
+      //          addItemTotal = 0;
+      //    }}
+
+
+
+
+
+
+
+//2nd item plus value
+const btnPlus1 = document.getElementById('btnPlus1')
+      btnPlus1.addEventListener('click' , function(){
+         const itemValue1 = document.getElementById("itemValue1").value++
+         
+         TotalAmount1('itemTotal1') 
+         TotalAmount1('subTotal')       
+         TotalAmount1('total') 
+      })
+   function TotalAmount1(id) {
+         const itemTotal = document.getElementById(id).innerText;
+         const itemTotalNumber= parseFloat(itemTotal);
+         const addItemTotal = itemTotalNumber + 59;
+
+            document.getElementById(id).innerText = addItemTotal;
+      } 
+
+
+// 2nd item min value     
+      const btnMinus1 = document.getElementById('btnMinus1')
+      btnMinus1.addEventListener('click' , function(){
+         const itemValue1 = document.getElementById("itemValue1")
+         if(itemValue1.value <=0 && itemTotal1 <=0 ){
+            itemValue1.value = 0;
+            itemTotal1 = 0;
+         }
+         else{
+            itemValue1.value--;
+         };
+         
+         const itemTotal1 = document.getElementById("itemTotal1").innerText;
+         const itemTotalNumber1= parseFloat(itemTotal1);
+         const addItemTotal1 = itemTotalNumber1 - 59;
+
+         document.getElementById("itemTotal1").innerText = addItemTotal1;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const totalOne = parseFloat(subTotal);
+         const finalTotal1 = totalOne -  59;
+
+         document.getElementById("subTotal").innerText = finalTotal1;
+         document.getElementById("total").innerText = finalTotal1;  
+         
+      })
+
+//remove part
+
+const itemRemove = document.getElementById('itemRemove')
+   itemRemove.addEventListener("click" , function () {
+         removeItem('itemTotal')
+         const item = document.getElementById('item')
+        item.style.display = 'none'    
+    })
+
+   const itemRemove1 = document.getElementById('itemRemove1')
+   itemRemove1.addEventListener("click" , function () {
+         removeItem('itemTotal1')
+         const item1 = document.getElementById('item1')
+         item1.style.display = 'none'
+       })
+
+    function removeItem(id) {
+      const removeItemTotal = document.getElementById(id).innerText;
+      const removeSubTotal = document.getElementById("subTotal").innerText;
+      const removeTotal = removeSubTotal -removeItemTotal
+      document.getElementById("subTotal").innerText = removeTotal;
+      document.getElementById("total").innerText = removeTotal;
+    }
+
+
+
+
+
+
+      
+   </script>
+</body>
+
+</html>
